@@ -39,6 +39,7 @@ def setup_logging(
     console_handler.setLevel(console_level)
 
     logging.basicConfig(
+        level=logging.DEBUG,
         encoding="utf-8",
         format=logging_format,
         handlers=[console_handler, file_handler],
