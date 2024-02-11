@@ -2,13 +2,13 @@ import logging
 import pathlib
 from datetime import datetime
 import sys
-import traceback
 
 from modules import test
 
 
 def setup_logging(
     log_root_folder=None,
+    parent_multiplier=1,
     dir_name="logs",
     log_name="log - ",
     log_suffix="txt",
@@ -18,7 +18,10 @@ def setup_logging(
     logging_format="%(asctime)s [%(threadName)s] %(name)s:%(lineno)d %(levelname)s - %(message)s",
 ):
     if log_root_folder is None:
-        log_root_folder = pathlib.Path(__file__).absolute().parent
+        log_root_folder = pathlib.Path(__file__).absolute()
+
+        for i in range(parent_multiplier):
+            log_root_folder = log_root_folder.parent
 
     log_formatter = logging.Formatter(logging_format)
 
