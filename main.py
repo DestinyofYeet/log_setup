@@ -12,7 +12,7 @@ def setup_logging(
     log_suffix="txt",
     use_timestamp=True,
     strftime_format="%d.%m.%y - %H:%M:%S",
-    logging_format="%(asctime)s [%(threadName)s] %(name)s:%(lineno)d %(levelname)s - %(message)s",
+    logging_format="%(asctime)s [%(threadName)s] %(name)s:%(funcName)s:%(lineno)d %(levelname)s - %(message)s",
     file_level=logging.DEBUG,
     console_level=logging.INFO,
 ):
