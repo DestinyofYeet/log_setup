@@ -13,7 +13,7 @@ import logging
 from log_setup import main as log_setup  # pick a alias of your choosing
 
 def main():  # main entrypoint of your program
-  log_setup.setup_logging()  # if you have the folder in another subfolder, you can specify parent_multiplier as a depth counter
+  log_setup.setup_logging()  # if you have the folder in another subfolder, you can specify folder_depth to get the correct project root
   logger = logging.get_logger(__name__)
   logger.info("Hello")
 

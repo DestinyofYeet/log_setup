@@ -6,7 +6,7 @@ import sys
 
 def setup_logging(
     log_root_folder=None,
-    parent_multiplier=1,
+    folder_depth=1,
     dir_name="logs",
     log_name="log - ",
     log_suffix="txt",
@@ -16,10 +16,24 @@ def setup_logging(
     file_level=logging.DEBUG,
     console_level=logging.INFO,
 ):
+    """
+    Set up your logging
+    :param log_root_folder: The root of your project
+    :param folder_depth: The depth of the submodule in comparison to your project root. A depth of 1 will create the log folder in the submodule folder
+    :param dir_name: The directory name of the log folder
+    :param log_name: The name prefix of the log
+    :param log_suffix: The extension of the log
+    :param use_timestamp: Use a timestamp in the log file name?
+    :param strftime_format: The strftime format for the log file name
+    :param logging_format: The logging format
+    :param file_level: The logging level for the file
+    :param console_level: The logging level for the console
+    :return:
+    """
     if log_root_folder is None:
         log_root_folder = pathlib.Path(__file__).absolute()
 
-        for i in range(parent_multiplier):
+        for i in range(folder_depth):
             log_root_folder = log_root_folder.parent
 
     log_formatter = logging.Formatter(logging_format)
