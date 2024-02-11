@@ -1,8 +1,12 @@
 I am thinking of this as a sort of library.
 
+To use it in your project run:
+
 `git submodule add https://github.com/DestinyofYeet/log_setup`
 
-To update: `git submodule update --remote` 
+To update: 
+
+`git submodule update --remote` 
 
 To use:
 
