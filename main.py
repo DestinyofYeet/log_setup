@@ -12,8 +12,9 @@ def setup_logging(
     log_suffix="txt",
     use_timestamp=True,
     strftime_format="%d.%m.%y - %H:%M:%S",
-    logging_level=logging.DEBUG,
     logging_format="%(asctime)s [%(threadName)s] %(name)s:%(lineno)d %(levelname)s - %(message)s",
+    file_level=logging.DEBUG,
+    console_level=logging.INFO,
 ):
     if log_root_folder is None:
         log_root_folder = pathlib.Path(__file__).absolute()
@@ -31,18 +32,16 @@ def setup_logging(
 
     file_handler = logging.FileHandler(f"{dir_name}/{filename}")
     file_handler.setFormatter(log_formatter)
+    file_handler.setLevel(file_level)
 
     console_handler = logging.StreamHandler(sys.stdout)
     console_handler.setFormatter(log_formatter)
+    console_handler.setLevel(console_level)
 
     logging.basicConfig(
-        level=logging_level,
         encoding="utf-8",
         format=logging_format,
-        handlers=[
-            console_handler,
-            file_handler
-        ],
+        handlers=[console_handler, file_handler],
     )
 
 
