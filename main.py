@@ -3,8 +3,6 @@ import pathlib
 from datetime import datetime
 import sys
 
-from modules import test
-
 
 def setup_logging(
     log_root_folder=None,
@@ -51,27 +49,3 @@ def setup_logging(
 def log_traceback():
     logging.getLogger(__name__)
     logging.exception("An exception has occurred:", exc_info=True)
-
-
-def main():
-    setup_logging()
-
-    logger = logging.getLogger(__name__)
-
-    logger.info("main")
-    logger.error("error")
-
-    try:
-        1 / 0
-    except ZeroDivisionError:
-        logger.exception("Division failed", exc_info=True)
-
-    test.test()
-
-
-if __name__ == "__main__":
-    try:
-        main()
-    except Exception as e:
-        log_traceback()
-        raise
